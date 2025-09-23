@@ -1,0 +1,17 @@
+// C++ code
+//
+const int my_analog_pin = A0;
+int ADC_val = 0;
+
+void setup()
+{
+  Serial.begin(115200);
+  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(my_analog_pin, INPUT);
+}
+
+void loop()
+{
+  ADC_val = analogRead(my_analog_pin);
+  Serial.println(ADC_val);
+}
