@@ -1,0 +1,40 @@
+const int trigPin = 6;
+const int echoPin = 7;
+
+
+long duration;
+int distance;
+
+void setup() {
+ 
+  pinMode(trigPin, OUTPUT); 
+  pinMode(echoPin, INPUT);
+ 
+  pinMode(LED_BUILTIN, OUTPUT);
+
+  Serial.begin(9600); 
+  }
+
+void loop() {
+
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+
+ 
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+ 
+  duration = pulseIn(echoPin, HIGH);
+
+ 
+  distance = duration * 0.034 / 2;
+
+  if (distance <20)  digitalWrite(LED_BUILTIN, HIGH), Serial.print("STOP!!! I DONT LIKE YOU THIS IS UNDER 20 CM DO YOU KNOW HOW HARD LIFE IS WHEN HAVING LESS THAN 20CM!!! ") ;
+  else (LED_BUILTIN, LOW);
+ 
+  Serial.print("Distance: ");
+  Serial.println(distance);
+}
+
